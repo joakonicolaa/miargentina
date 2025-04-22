@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Argentina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #0056b9;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 span {
+      color: #00b0f0;
+    }
+
+    nav {
+      background-color: #003f7d;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.8rem 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0.5rem 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dni-page {
+      display: none;
+      text-align: center;
+    }
+
+    .dni-page img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin-top: 1rem;
+    }
+
+    .feature-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      text-align: center;
+      max-width: 150px;
+    }
+
+    .feature img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background-color: #0072CE;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section {
+        padding: 1rem;
+      }
+
+      .feature-icons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span>mi</span>Argentina</h1>
+    <p>Tu perfil digital ciudadano para gestionar trámites, sacar turnos, acceder a tus credenciales y recibir información personalizada.</p>
+  </header>
+  <nav>
+    <a href="#inicio" onclick="mostrarSeccion('inicio')">Inicio</a>
+    <a href="#credenciales" onclick="mostrarSeccion('credenciales')">Mis credenciales</a>
+    <a href="#turnos" onclick="mostrarSeccion('turnos')">Turnos</a>
+    <a href="#notificaciones" onclick="mostrarSeccion('notificaciones')">Notificaciones</a>
+  </nav>
+  <main>
+    <section id="inicio" class="section">
+      <h2>Bienvenido/a</h2>
+      <p>Accedé a todos tus servicios digitales del Estado.</p>
+      <button onclick="mostrarSeccion('credenciales')">Ingresá a Mi Argentina</button>
+      <div class="feature-icons">
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/download.png" alt="App">
+          <p>Descargá la app y registrate</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/checked-user-male.png" alt="Identidad">
+          <p>Cómo validar mi identidad</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/faq.png" alt="FAQ">
+          <p>Preguntas frecuentes</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/services.png" alt="Servicios">
+          <p>Servicios disponibles</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/chat.png" alt="Mesa">
+          <p>Mesa de ayuda</p>
+        </div>
+      </div>
+    </section>
+    <section id="credenciales" class="section">
+      <h2>Mis credenciales</h2>
+      <p>Visualizá tus credenciales digitales como tu DNI, licencia de conducir y más.</p>
+      <button onclick="mostrarSeccion('dni')">Ver DNI</button>
+    </section>
+    <section id="turnos" class="section">
+      <h2>Turnos</h2>
+      <p>Consultá o sacá turnos para trámites oficiales.</p>
+    </section>
+    <section id="notificaciones" class="section">
+      <h2>Notificaciones</h2>
+      <p>Revisá los avisos importantes y novedades del Estado.</p>
+    </section>
+    <section id="dni" class="section dni-page">
+      <h2>Documento Nacional de Identidad (DNI)</h2>
+      <p>Esta es tu credencial digital del DNI.</p>
+      <img src="dni.jpg" alt="DNI de Joaquín Nicola">
+      <br><br>
+      <button onclick="volverInicio()">Volver</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Mi Argentina</p>
+  </footer>
+
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('main .section');
+      secciones.forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function volverInicio() {
+      mostrarSeccion('credenciales');
+    }
+
+    // Mostrar solo el inicio al cargar
+    mostrarSeccion('inicio');
+  </script>
+</body>
+</html>
